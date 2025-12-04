@@ -37,6 +37,10 @@ numeric_enum! {
         /// - `publisher_vm_id`: The ID of the publisher VM.
         /// - `key`: The key of the IVC channel.
         HIVCUnSubscribChannel = 6,
+        /// Request to establish a connection between the guests.
+        HConEstablishConnect = 7,
+        /// Request to remove the connection between the guests.
+        HConUnEstablishConnect = 8,
     }
 }
 
@@ -60,6 +64,12 @@ impl core::fmt::Debug for HyperCallCode {
             }
             HyperCallCode::HIVCUnSubscribChannel => {
                 write!(f, "HIVCUnSubscribChannel {:#x}", *self as u32)
+            }
+            HyperCallCode::HConEstablishConnect => {
+                write!(f, "HIVCPublishConnect {:#x}", *self as u32)
+            }
+            HyperCallCode::HConUnEstablishConnect => {
+                write!(f, "HIVCUnPublishConnect {:#x}", *self as u32)
             }
         }?;
         write!(f, ")")
