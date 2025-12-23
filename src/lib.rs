@@ -41,6 +41,8 @@ numeric_enum! {
         HConEstablishConnect = 7,
         /// Request to remove the connection between the guests.
         HConUnEstablishConnect = 8,
+        /// Request to send ipi to another vm.
+        HIVCSendIPI = 9,
     }
 }
 
@@ -69,6 +71,9 @@ impl core::fmt::Debug for HyperCallCode {
                 write!(f, "HIVCPublishConnect {:#x}", *self as u32)
             }
             HyperCallCode::HConUnEstablishConnect => {
+                write!(f, "HIVCUnPublishConnect {:#x}", *self as u32)
+            }
+            HyperCallCode::HIVCSendIPI => {
                 write!(f, "HIVCUnPublishConnect {:#x}", *self as u32)
             }
         }?;
